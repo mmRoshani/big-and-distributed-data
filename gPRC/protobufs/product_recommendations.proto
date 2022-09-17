@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+enum Category {
+    MELK = 0;
+    CAR = 1;
+    DIGITAL = 2;
+}
+
+message RRequest {
+    int32 user_id = 1;
+    Category category = 2;
+    int32 result_limit = 3;
+}
+
+message Ad {
+    int32 id = 1;
+    string title = 2;
+    float price = 3;
+}
+
+message Ads {
+    repeated Ad ad = 1;
+}
+
+service Recommendations {
+    rpc Recommend (RRequest) returns (Ads); 
+} 
